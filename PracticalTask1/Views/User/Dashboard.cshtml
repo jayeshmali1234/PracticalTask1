@@ -1,0 +1,24 @@
+﻿@model IEnumerable<PracticalTask1.Models.SubCategory>
+
+<h2>User Dashboard</h2>
+
+<h3>Your Assigned Subcategories:</h3>
+
+@if (Model.Any())
+{
+    <ul>
+        @foreach (var subCategory in Model)
+        {
+            <li>@subCategory.Name</li>
+        }
+    </ul>
+}
+else
+{
+    <p>No subcategories have been assigned to you yet.</p>
+}
+
+<p>If you have any questions or need help, please contact the administrator.</p>
+
+<!-- Button to navigate to Admin Dashboard -->
+@Html.ActionLink("Go to Admin Dashboard", "Index", "Admin", null, new { @class = "btn btn-info" })

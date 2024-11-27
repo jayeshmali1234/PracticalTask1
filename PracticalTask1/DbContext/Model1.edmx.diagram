@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4ec1b5d5dc534027bf434f9b35246ac1" Name="Diagram1">
+        <EntityTypeShape EntityType="PracticalInterviewDBModel.Category" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PracticalInterviewDBModel.SubCategory" Width="1.5" PointX="3" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PracticalInterviewDBModel.UserCategory" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PracticalInterviewDBModel.User" Width="1.5" PointX="0.75" PointY="6.875" IsExpanded="true" />
+        <AssociationConnector Association="PracticalInterviewDBModel.FK__SubCatego__Categ__2F10007B" ManuallyRouted="false" />
+        <AssociationConnector Association="PracticalInterviewDBModel.FK__UserCateg__Categ__32E0915F" ManuallyRouted="false" />
+        <AssociationConnector Association="PracticalInterviewDBModel.FK__UserCateg__UserI__31EC6D26" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

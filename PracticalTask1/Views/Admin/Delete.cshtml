@@ -1,0 +1,11 @@
+﻿@model PracticalTask1.Models.UserModel
+
+<h2>Delete User</h2>
+
+<p>Are you sure you want to delete the user <strong>@Model.Name</strong>?</p>
+
+@using (Html.BeginForm())
+{
+    <button type="submit" class="btn btn-danger">Delete</button>
+    @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-default" })
+}
