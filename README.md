@@ -1,13 +1,13 @@
 ### First step to create databases on your sql server
 
-# This data bases call in your visual studio using Entity Framework Data First Approch   So, Automaticallay generate your connection string
+##### This data bases call in your visual studio using Entity Framework Data First Approch   So, Automaticallay generate your connection string
 
 #### Run Our Project ###
 
  ## You can see our Admin Page ##
 ![Screenshot (180)](https://github.com/user-attachments/assets/dc667e27-b61e-4b6d-83ba-304ce5082849)
 
-# Edit ,Delete ,Create oOperations you can performe
+### Edit ,Delete ,Create oOperations you can performe
 
 ### First you Create Operations. You can see the Validation Messages.  ##
 ![Screenshot (181)](https://github.com/user-attachments/assets/d1713b76-e07f-49b9-a887-487603aa1b1f)
