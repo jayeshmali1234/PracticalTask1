@@ -56,7 +56,6 @@ namespace PracticalTask1.Controllers
                 {
                     user.Password = "DefaultPassword123"; // Or generate a secure password
                 }
-                user.Password = HashPassword(user.Password);
                 _context.Users.Add(user); // Add user to DbContext
 
                 try
@@ -120,7 +119,7 @@ namespace PracticalTask1.Controllers
                 // Update the password only if a new one is provided
                 if (!string.IsNullOrEmpty(model.Password))
                 {
-                    user.Password = HashPassword(model.Password); // Hash the password if provided
+                    user.Password = model.Password; 
                 }
 
                 _context.SaveChanges(); // Save changes to the database
@@ -162,13 +161,6 @@ namespace PracticalTask1.Controllers
             }
             return RedirectToAction("Index");
         }
-        private string HashPassword(string password)
-        {
-            using (SHA256 sha256 = SHA256.Create())
-            {
-                byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
-                return BitConverter.ToString(bytes).Replace("-", "").ToLower();
-            }
-        }
+       
     }
 }

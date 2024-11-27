@@ -19,7 +19,7 @@
 
     <div class="form-group">
         @Html.LabelFor(model => model.Email)
-        @Html.TextBoxFor(model => model.Email, new { @class = "form-control", @readonly = "readonly" }) <!-- Email is readonly -->
+        @Html.TextBoxFor(model => model.Email, new { @class = "form-control" }) 
         @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
     </div>
 
