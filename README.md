@@ -6,11 +6,15 @@
 
 
  ## You can see our Admin Page ##
-![Screenshot (180)](https://github.com/user-attachments/assets/dc667e27-b61e-4b6d-83ba-304ce5082849)
+
+![Screenshot (186)](https://github.com/user-attachments/assets/319751d9-6e85-4dff-aff3-04151e8a8f4a)
+
+## Insert New User So Also Directly update our sql server
+
+![Screenshot (187)](https://github.com/user-attachments/assets/5f47387a-d73a-48c9-97a0-96ccba42e146)
 
 
-
-### Edit ,Delete ,Create oOperations you can performe
+### Edit ,Delete ,Create Operations you can performe
 
 
 ### First you Create Operations. You can see the Validation Messages.  ##
