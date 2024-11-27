@@ -1,0 +1,107 @@
+
+-- Create Users Table
+CREATE TABLE Users (
+    Id INT IDENTITY(1,1) PRIMARY KEY,
+    Name NVARCHAR(100) NOT NULL,
+    Phone CHAR(10) NOT NULL CHECK (LEN(Phone) = 10),
+    Email NVARCHAR(100) NOT NULL UNIQUE CHECK (Email LIKE '%_@__%.__%'),
+    Password NVARCHAR(100) NOT NULL,
+    IsAdmin BIT NOT NULL
+);
+
+-- Create Category Table
+CREATE TABLE Category (
+    Id INT IDENTITY(1,1) PRIMARY KEY,
+    Name NVARCHAR(100) NOT NULL UNIQUE
+);
+
+-- Create SubCategory Table
+CREATE TABLE SubCategory (
+    Id INT IDENTITY(1,1) PRIMARY KEY,
+    CategoryId INT NOT NULL,
+    Name NVARCHAR(100) NOT NULL,
+    FOREIGN KEY (CategoryId) REFERENCES Category(Id)
+);
+
+-- Create UserCategory Table
+CREATE TABLE UserCategory (
+    Id INT IDENTITY(1,1) PRIMARY KEY,
+    UserId INT NOT NULL,
+    CategoryId INT NOT NULL,
+    FOREIGN KEY (UserId) REFERENCES Users(Id),
+    FOREIGN KEY (CategoryId) REFERENCES Category(Id)
+);
+
+-- Insert sample data into Category and SubCategory tables
+INSERT INTO Category (Name) VALUES ('Category-1'), ('Category-2'), ('Category-3');
+
+INSERT INTO SubCategory (CategoryId, Name)
+VALUES 
+    (1, 'Sub-Category-1'),
+    (1, 'Sub-Category-2'),
+    (1, 'Sub-Category-3'),
+    (2, 'Sub-Category-4'),
+    (2, 'Sub-Category-5'),
+    (3, 'Sub-Category-6');
+
+-- Create a stored procedure for adding a user
+CREATE PROCEDURE AddUser
+    @Name NVARCHAR(100),
+    @Phone CHAR(10),
+    @Email NVARCHAR(100),
+    @Password NVARCHAR(100),
+    @IsAdmin BIT
+AS
+BEGIN
+    INSERT INTO Users (Name, Phone, Email, Password, IsAdmin)
+    VALUES (@Name, @Phone, @Email, @Password, @IsAdmin);
+END;
+GO
+
+-- Create a stored procedure for adding a category
+CREATE PROCEDURE AddCategory
+    @Name NVARCHAR(100)
+AS
+BEGIN
+    INSERT INTO Category (Name)
+    VALUES (@Name);
+END;
+GO
+
+-- Create a stored procedure for adding a subcategory
+CREATE PROCEDURE AddSubCategory
+    @CategoryId INT,
+    @Name NVARCHAR(100)
+AS
+BEGIN
+    INSERT INTO SubCategory (CategoryId, Name)
+    VALUES (@CategoryId, @Name);
+END;
+GO
+
+-- Create a stored procedure for assigning a category to a user
+CREATE PROCEDURE AssignUserCategory
+    @UserId INT,
+    @CategoryId INT
+AS
+BEGIN
+    INSERT INTO UserCategory (UserId, CategoryId)
+    VALUES (@UserId, @CategoryId);
+END;
+GO
+
+-- Sample Stored Procedure for Retrieving Users with Their Categories
+CREATE PROCEDURE GetUsersWithCategories
+AS
+BEGIN
+    SELECT 
+        U.Id AS UserId,
+        U.Name AS UserName,
+        C.Name AS CategoryName,
+        SC.Name AS SubCategoryName
+    FROM Users U
+    LEFT JOIN UserCategory UC ON U.Id = UC.UserId
+    LEFT JOIN Category C ON UC.CategoryId = C.Id
+    LEFT JOIN SubCategory SC ON C.Id = SC.CategoryId;
+END;
+GO
